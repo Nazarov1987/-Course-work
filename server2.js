@@ -139,13 +139,6 @@ app.get('/comments', (req, res) => fs.readFile('./db/comments.json', 'utf-8', (e
 	}));
 
 
-app.patch('/comments/:id', (req, res) => fs.readFile('./db/comments.json', 'utf-8', (err, data) => {  // одобрение комментария 
-    if (err) res.send('Произошла ошибка' + err)
-    const comments = JSON.parse(data)
-    const inCommentList = comments.find(item => item.id == req.params.id) 
-    fs.writeFile('./db/comments.json', JSON.stringify(comments), () => res.send(inCommentList))
-}))
-
 app.listen(3000, () => {
 	console.log("Server has been started");
 });
